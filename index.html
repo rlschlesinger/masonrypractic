@@ -3,7 +3,25 @@
   <head>
     <meta charset="utf-8">
     <title>Responsive Grids Tuts</title>
-    <link rel="stylesheet" href="style.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <style>
+    html, body{
+      margin: 0px;
+      background-color: #444;
+    }
+
+    .container{
+      padding: 10px;
+    }
+
+    .block{
+      background-color: red;
+      display: inline-block;
+      width: 200px;
+      padding: 10px;
+      margin: 10px;;
+    }
+    </style>
   </head>
   <body>
     <div class="container">
@@ -71,7 +89,18 @@
         Venmo franzen letterpress gochujang squid wolf YOLO, street art helvetica man braid cardigan mumblecore thundercats flexitarian. VHS green juice offal polaroid, bicycle rights truffaut aesthetic XOXO deep v 3 wolf moon pour-over wayfarers. Tousled deep v banh mi, YOLO blog authentic disrupt biodiesel butcher taxidermy beard pinterest.
       </div>
 
-    
+
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src="https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script>
+      $(window).on('load', function(){
+        $('.container').masonry({
+          columnWidth: 'div.block',
+          itemSelector: 'div.block'
+        });
+      });
+    </script>
   </body>
 </html>
