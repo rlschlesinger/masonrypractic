@@ -3,22 +3,103 @@
   <head>
     <meta charset="utf-8">
     <title>Responsive Grids Tuts</title>
+    <link rel="stylesheet" href="http://s.mlcdn.co/animate.css">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Shadows+Into+Light+Two|Quicksand' rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src="https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script>
+      $(window).on('load', function(){
+        $('.container').masonry({
+          columnWidth: 'div.block img',
+          itemSelector: 'div.block',
+          isFitWidth: true
+        });
+
+        $(function() {
+           $('#menu > li').hover(
+               function () {
+                   var $this = $(this);
+                   $('a',$this).stop(true,true).animate({
+                           'bottom':'-15px'
+                       }, 300);
+                   $('i',$this).stop(true,true).animate({
+                           'top':'-10px'
+                       }, 400);
+               },
+               function () {
+                   var $this = $(this);
+                   $('a',$this).stop(true,true).animate({
+                           'bottom':'-95px'
+                       }, 300);
+                   $('i',$this).stop(true,true).animate({
+                           'top':'50px'
+                       }, 400);
+               }
+           );
+       });
+
+      new WOW().init();
+
+      });
+    </script>
     <style>
 
 
     .container{
-      padding: 10px;
+      padding: 5px;
       margin-top: 30px;
+
+    }
+
+    .category-text{
+      position: absolute;
+      bottom: 50px;
+      left: 25px;
+      display: none;
+      z-index: 1;
+      color: white
+    }
+
+    div.block:hover h3{
+      display: inline;
+    }
+
+    .color-cover{
+      background-color: rgba(0,0,0,0.5);
+      width: 50%;
+      margin: 0 auto;
+    }
+
+    .center{
+      text-align: center;
     }
 
     .block{
-      background-color: red;
       display: inline-block;
       width: 200px;
       padding: 10px;
-      margin: 10px;;
     }
+
+div.block:hover p {
+    display: block;
+}
+
+    .block img{
+      transition: all .2s ease-in-out;
+      max-width: 350px;
+      margin-left: 10px;
+      margin-right: 10px;
+      margin-bottom: 5px;
+      z-index: 0;
+    }
+
+    div.block:hover img{
+    opacity:0.4;
+    transform: scale(1.1);
+}
 
     .top-row{
       height: 500px;
@@ -32,7 +113,7 @@ body{
     font-family: Helvetica, Arial, sans-serif;
     font-weight: bold;
     color:#999;
-    background:#f0f0f0 url(../title.png) no-repeat center center;
+    background: black url(../title.png) no-repeat center center;
     height:600px;
 }
 a.ref{
@@ -54,14 +135,34 @@ a.back{
     left:10px;
     background:transparent url(../back.png) no-repeat top left;
 }
+
+.welcome{
+  border: 1px solid black;
+  padding: 5px;
+  margin: 0 auto;
+  margin-top: 40px;
+  background-image: url("http://www.roadpickle.com/wp-content/uploads/valley-of-fire-state-park-nevada.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: right -500px bottom -360px;
+  color: white;
+}
+
+.welcome p{
+  font-family: 'Quicksand', sans-serif;
+}
+
+.welcome h1{
+  font-family: 'Shadows Into Light Two', cursive;
+}
 .box{
-    width:90%;
-    height:160px;
+    width:1130px;
+    height:200px;
     margin:0 auto;
     position:relative;
     overflow:hidden;
     border:3px solid #fff;
-    background-color:#fff;
+    background-color:rgb(238,238,238);
     -moz-box-shadow:1px 1px 6px #000;
     -webkit-box-shadow:1px 1px 6px #000;
     -moz-border-radius:0px 0px 20px 20px;
@@ -72,6 +173,7 @@ a.back{
 ul#menu{
     list-style:none;
     position:absolute;
+    margin: 0 auto;
     bottom:0px;
     left:20px;
     font-size:36px;
@@ -119,15 +221,15 @@ ul#menu span.title{
     display:block;
     height:26px;
     text-shadow:1px 1px 1px #000;
-    color:#B7B7B6;
+    color: black;
     text-indent:10px;
 }
 ul#menu span.description{
     width:175px;
-	height:100px;
-    background-color:#B7B7B6;
+	  height:100px;
+    background-color:rgb(238,238,238);
     border:3px solid #fff;
-    color:#fff;
+    color:white;
     display:block;
     font-size:24px;
     padding:10px;
@@ -139,16 +241,17 @@ ul#menu span.description{
     border-radius:10px;
 }
 ul#menu a:hover span.description{
-    background-color:#54504F;
+    background-color: black;
 }
 ul#menu a:hover span.title{
-    color:#54504F;
+    color: white;
 }
     </style>
   </head>
   <body>
 
       <div class="box">
+        <img class="header-image" src="https://www.lvchamber.com/governors-conference/assets/img/ngoed-logo.png">
     <ul id="menu">
         <li>
             <a>
@@ -188,6 +291,13 @@ ul#menu a:hover span.title{
     </ul>
 </div>
 
+<div class="jumbotron center welcome">
+  <div class="color-cover">
+  <h1>Welcome to Nevada</h1>
+  <p>We're open for business</p>
+</div>
+</div>
+
 
 
 
@@ -195,105 +305,122 @@ ul#menu a:hover span.title{
 
 
 
-      <div class="block">
-        This is so awesome! I am using Masonry!
+      <div class="block wow zoomIn">
+        <a href="#">
+        <img src="http://www.cbronline.com/Uploads/NewsArticle/4917209/main.jpg">
+        <h3 class="center category-text">Technology</h3>
+      </a>
       </div>
 
-      <div class="block">
-        Knausgaard lomo tilde trust fund wayfarers wolf. Four loko vegan umami PBR&B deep v, direct trade twee. Food truck direct trade single-origin coffee skateboard ethical pabst, vinyl raw denim affogato locavore everyday carry yuccie pug schlitz street art.
+      <div class="block wow zoomIn">
+        <a href="#">
+        <img src="http://www.utsi.edu/library/images/x152b.jpg">
+        <h3 class="center category-text">Aerospace</h3>
+      </a>
       </div>
 
-      <div class="block">
-        You probably haven't heard of them flannel pug williamsburg freegan, artisan gastropub fanny pack pinterest kickstarter. Tacos kale chips semiotics yuccie chartreuse. Gastropub vinyl venmo four loko blue bottle, pickled master cleanse narwhal ugh lo-fi. Bespoke sartorial irony, tote bag disrupt roof party butcher fashion axe.
+      <div class="block wow zoomIn">
+        <a href="#">
+        <img src="http://www.activistpost.com/wp-content/uploads/2015/09/Manufacturing.jpg">
+        <h3 class="center category-text">Manufacturing</h3>
+      </a>
       </div>
 
-      <div class="block">
-        Chartreuse pork belly umami, narwhal semiotics kombucha intelligentsia distillery.
+      <div class="block wow zoomIn">
+        <a href="#">
+        <img src="https://www.smartrecruitonline.com/wp-content/uploads/2015/08/recruitment-for-supplychain-and-logistics.jpg?72b882">
+        <h3 class="center category-text">Logistics</h3>
+      </a>
       </div>
 
-      <div class="block">
-        Banh mi scenester chillwave actually. You probably haven't heard of them raw denim forage, tofu roof party typewriter try-hard disrupt +1 quinoa direct trade YOLO chambray seitan. Blue bottle photo booth swag, raw denim tattooed green juice pabst salvia franzen skateboard neutra affogato microdosing.
+      <div class="block wow zoomIn">
+        <a href="#">
+        <img src="http://www.nikk.no/wp-content/uploads/foto_nordiskfilm.jpg">
+        <h3 class="center category-text">Film</h3>
+      </a>
       </div>
 
-      <div class="block">
-        Deep v heirloom tilde try-hard lo-fi, normcore mumblecore pickled small batch williamsburg slow-carb cred. Whatever tilde thundercats, fanny pack pickled tote bag tousled. Man bun irony yr, franzen actually synth celiac meggings kitsch chambray.
+      <div class="block wow zoomIn">
+        <a href="#">
+        <img src="https://www.entreprenic.com/wp-content/uploads/2016/02/small-business.jpg">
+        <h3 class="center category-text">Small Business</h3>
+      </a>
       </div>
 
-      <div class="block">
-        Food truck mustache godard, pickled messenger bag pork belly man braid readymade keffiyeh cray master cleanse.
+      <div class="block wow zoomIn">
+        <a href="#">
+        <img src="http://www.victoryairtransport.com/wp-content/uploads/2015/08/Fotolia_26465371_Subscription_XL.jpg">
+        <h3 class="center category-text">Globalization</h3>
+      </a>
       </div>
 
-      <div class="block">
-         Cardigan taxidermy messenger bag typewriter plaid pour-over. Drinking vinegar blue bottle chambray locavore, health goth hashtag mlkshk gochujang distillery fanny pack jean shorts seitan squid tousled. Salvia forage marfa food truck.
+      <div class="block wow zoomIn">
+        <a href="#">
+        <img src="http://www.chardonlabs.com/wp-content/uploads/2015/10/Water-Treatment-Resources.jpg">
+        <h3 class="center category-text">Water</h3>
+      </a>
       </div>
 
-      <div class="block">
-        Venmo pour-over chillwave sustainable. Pickled distillery selfies, blog godard art party tumblr pork belly man braid brooklyn flexitarian. Pickled flannel meh, umami chicharrones lo-fi DIY tousled pabst gentrify kickstarter butcher celiac.
+      <div class="block wow zoomIn">
+        <a href="#">
+        <img src="https://www.ausimmbulletin.com/app/uploads/2015/04/Innovation-in-mining-1570x740.jpg">
+        <h3 class="center category-text">Mining</h3>
+      </a>
       </div>
 
-      <div class="block">
-        Literally gochujang dreamcatcher next level, gentrify tousled readymade echo park four dollar toast ethical twee. Pinterest tattooed keytar XOXO locavore, waistcoat try-hard. Stumptown umami cardigan quinoa pinterest sartorial. Hoodie humblebrag man braid neutra, kale chips kinfolk portland hammock. Locavore ugh craft beer pork belly pug.
+      <div class="block wow zoomIn">
+        <a href="#">
+        <img src="http://quietmike.org/wp-content/uploads/2015/04/agriculture.jpg">
+        <h3 class="center category-text">Agriculture</h3>
+      </a>
       </div>
 
-      <div class="block">
-        Food truck seitan letterpress craft beer street art master cleanse drinking vinegar pabst irony. Roof party you probably haven't heard of them pitchfork cold-pressed, humblebrag twee 90's celiac hammock cred fanny pack neutra portland.
+      <div class="block wow zoomIn">
+        <a href="#">
+        <img src="http://diitem.com/images/InformationTechnology.jpg">
+        <h3 class="center category-text">Information Technology</h3>
+      </a>
       </div>
 
-      <div class="block">
-      Gentrify disrupt literally, williamsburg aesthetic narwhal taxidermy kale chips. Cred man braid gluten-free, jean shorts small batch farm-to-table put a bird on it gastropub.
+      <div class="block wow zoomIn">
+        <a href="#">
+        <img src="http://geology.com/articles/renewable-energy-trends/renewable-energy-istock.jpg">
+        <h3 class="center category-text">Energy</h3>
+      </a>
       </div>
 
-      <div class="block">
-      Bespoke butcher 90's, sartorial kitsch food truck cred DIY ugh. Cornhole meggings blog, craft beer affogato portland vegan PBR&B YOLO synth leggings ramps sriracha. Marfa kale chips +1, poutine DIY asymmetrical small batch squid tumblr pabst photo booth meggings.
+      <div class="block wow zoomIn">
+        <a href="#">
+        <img src="http://www.ncchc.org/filebin/images/CHORDS-slideshow.jpg">
+        <h3 class="center category-text">Health Care</h3>
+      </a>
       </div>
 
-      <div class="block">
-        Polaroid photo booth kogi, raw denim craft beer etsy small batch wolf. Tofu skateboard trust fund, 3 wolf moon neutra scenester shabby chic DIY twee.
+      <div class="block wow zoomIn">
+        <a href="#">
+        <img src="https://glendeven.com/wp-content/uploads/2015/11/fine-dining-mendocino.jpg">
+        <h3 class="center category-text">Hospitality</h3>
+      </a>
       </div>
 
-      <div class="block">
-        Cray listicle craft beer post-ironic, chillwave letterpress keffiyeh biodiesel kickstarter keytar disrupt put a bird on it fap paleo readymade. Banh mi PBR&B pop-up tumblr, keytar artisan cold-pressed wayfarers keffiyeh vice. Ugh hoodie gentrify dreamcatcher squid YOLO.
+      <div class="block wow zoomIn">
+        <a href="#">
+        <img src="http://techdissected.com/wp-content/uploads/2016/05/Casino-Gaming-Image-2.jpg">
+        <h3 class="center category-text">Gaming</h3>
+      </a>
       </div>
 
-      <div class="block">
-        Venmo franzen letterpress gochujang squid wolf YOLO, street art helvetica man braid cardigan mumblecore thundercats flexitarian. VHS green juice offal polaroid, bicycle rights truffaut aesthetic XOXO deep v 3 wolf moon pour-over wayfarers. Tousled deep v banh mi, YOLO blog authentic disrupt biodiesel butcher taxidermy beard pinterest.
+      <div class="block wow zoomIn">
+        <a href="#">
+        <img src="http://www.elmawke3.com/wp-content/uploads/2014/09/10%D9%86%D8%A8%D8%B9-%D9%85%D8%A7%D8%A1-%D9%86%D9%8A%D9%81%D8%A7%D8%AF%D8%A7.jpg">
+        <h3 class="center category-text">Tourism</h3>
+      </a>
       </div>
+
 
 
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
-    <script src="https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    <script>
-      $(window).on('load', function(){
-        $('.container').masonry({
-          columnWidth: 'div.block',
-          itemSelector: 'div.block'
-        });
 
-        $(function() {
-           $('#menu > li').hover(
-               function () {
-                   var $this = $(this);
-                   $('a',$this).stop(true,true).animate({
-                           'bottom':'-15px'
-                       }, 300);
-                   $('i',$this).stop(true,true).animate({
-                           'top':'-10px'
-                       }, 400);
-               },
-               function () {
-                   var $this = $(this);
-                   $('a',$this).stop(true,true).animate({
-                           'bottom':'-95px'
-                       }, 300);
-                   $('i',$this).stop(true,true).animate({
-                           'top':'50px'
-                       }, 400);
-               }
-           );
-       });
-      });
-    </script>
+
   </body>
 </html>
